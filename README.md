@@ -21,7 +21,14 @@ module "tags" {
 resource "aws_autoscaling_group" "example" {
   ...
 
-  tags = module.tags.asg_tags
+  dynamic "tag" {
+    for_each = module.tags.asg_tags
+    content {
+      key = tag.key
+      value = tag.value
+      propagate_at_launch = tag.propagate_at_launch
+    }
+  }
 }
 ```
 

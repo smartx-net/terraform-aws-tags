@@ -17,5 +17,5 @@ func TestModule(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	output := terraform.Output(t, terraformOptions, "asg_tags")
-	assert.Equal(t, "[map[key:foo propagate_at_launch:true value:bar] map[key:hello propagate_at_launch:true value:world]]", output)
+	assert.Equal(t, "[map[key:foo propagate_at_launch:true value:bar] map[key:hello propagate_at_launch:true value:world] map[key:ham propagate_at_launch:true value:spam]]", output)
 }
